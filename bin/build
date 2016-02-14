@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+require('../lib/build.js')({
+   cwd :  process.cwd(),
+   port :  process.argv[2] || 8998 
+});
+

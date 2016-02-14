@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+require('../logic/test.js')({
+   cwd :  process.cwd(),
+   port :  process.argv[2] || 8999 
+});
+
