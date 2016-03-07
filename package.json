@@ -10,6 +10,7 @@
     "neofe": "./bin/neofe.js"
   },
   "dependencies": {
+    "juicerify" : "*",
     "JSONStream": "^1.0.4",
     "aliasify": "^1.8.1",
     "babelify": "^6.3.0",
