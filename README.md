@@ -1,5 +1,7 @@
 # neofe
 
+-- Alpha Version --
+
 tool for fe developer 
 
 npm install -g neofe
