@@ -1,6 +1,6 @@
 {
   "name": "neofe",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "a tool for web developer ",
   "main": "./lib/index.js",
   "author": {
