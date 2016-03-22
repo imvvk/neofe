@@ -1,6 +1,9 @@
 # neofe
 
-a tool for fe developer link fekit 
+a tool for fe developer 
+
+-- Alpha Version --
+
 
 npm install -g neofe
 
