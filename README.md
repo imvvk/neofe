@@ -60,7 +60,7 @@ Options :
           "external" : ["zepto","event"],
           "extensions" : [".tmpl"]
         },
-        //输入文件
+        //输出文件
         "exports" : {
           "scripts" : ["./src/scripts/exports/**/*.js"],
           "styles" : ["./src/styles/exports/**/*.scss"]
@@ -71,7 +71,7 @@ Options :
       "ver_options" : {
         "replace" : { "reg" : "/src" , "str" : ""}
       },
-
+      //发布任务
       "deploy" : {
         "cc" : {
           "src" : "./build/src/",
