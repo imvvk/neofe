@@ -18,10 +18,11 @@ neofe --help
 ### Usage: neofe [command] {OPTIONS}
 
 Command :
-  server  start a server for develop.
-          a minify  css or js file can map a local file by the server.
-          本地启动一个服务器 ,通过这个服务器可以将打包混淆的css 或者 js 文件解析
-          为本地开发中的文件。
+
+    server  start a server for develop.   
+            a minify  css or js file can map a local file by the server.
+            本地启动一个服务器 ,通过这个服务器可以将打包混淆的css 或者 js 文件解析
+            为本地开发中的文件。
 
           Options :
 
@@ -31,11 +32,11 @@ Command :
                        开启单一模式， 打包的文件将会被分解为多个单独的文件。
 
 
-  build   as follow the package.json build the project  (pack, compress ,and minify  css or js file);
-          根据package.json 构建项目 比如打包 压缩 混淆 CSS 或者 JS 文件 。
+    build   as follow the package.json build the project  (pack, compress ,and minify  css or js file);
+            根据package.json 构建项目 比如打包 压缩 混淆 CSS 或者 JS 文件 。
 
 
-  deploy  deploy builded files  to the online  server .
+    deploy  deploy builded files  to the online  server .
           将构建后的file 发布到线上服务器. 一般应该用 jenkins.
 
           Options :
@@ -43,10 +44,10 @@ Command :
           --dist , -d "prd / beta / dev"
 
 
-Options :
+      Options :
 
-  --help , -h  show help
-  --version, -v show neofe version
+      --help , -h  show help
+      --version, -v show neofe version
 
 
 ### Package.json Example
