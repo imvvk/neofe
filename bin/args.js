@@ -4,9 +4,9 @@ var build = require("../lib/build.js");
 var sync = require("../lib/sync.js");
 var upload = require("../lib/upload_aliyun.js");
 
-module.exports.server = function(port){
+module.exports.server = function(options){
   var cwd = process.cwd();
-  return server(cwd,{port:port});
+  return server(cwd,options);
 }
 
 module.exports.build = function(){

@@ -17,27 +17,32 @@ var fs = require('fs');
 var JSONStream = require('JSONStream');
 var through = require('through2');
 var argv = require("yargs")
-    .alias("t","task")
-    .alias("p","port")
-    .alias("d","dist")
+    .alias("p","port")   // server port
+    .alias("s","single") // browerify not pack  single mod
+    .alias("d","dist")   // deploy dist name
+    .alias("t","task")   // deploy task name
+    .alias("h","help")
+    .alias("v","version")
     .argv;
 
 
 var b = require('./args');
 
 if (find("server")) {
-  if (typeof argv.p !== "number"){
-    argv.p = 8998;
+  var opts = {};
+  opts.port = argv.port;
+  opts.single = argv.single;
+
+  if (typeof opts.port !== "number"){
+    opts.port = 8998;
   }
-  b.server(argv.p);
-}
+  console.log("start neofe local server port : %s , mode : %s .",opts.port , opts.single ? "single" : "pack");
+  b.server(opts);
 
-
-if (find("build")) {
+} else if (find("build")) {
   console.log("start build======");
   b.build();
-}
-if(find("deploy")){
+}else if(find("deploy")){
   var task = argv.t , dist = argv.d;
   if(!task){
     console.error("not input deploy task");
@@ -49,20 +54,12 @@ if(find("deploy")){
   }
   console.log("start deploy======");
   b.deploy(task,dist);
-}
-
-if(find("upload")){
-  var task = argv.t , dist = argv.d;
-  if(!task){
-    console.error("not input deploy task");
-    return;
-  }
-  if (!dist) {
-    console.error("no input deploy dist");
-    return;
-  }
-  console.log("start deploy======");
-  b.deployS(task,dist);
+} else if (argv.h) {
+  return fs.createReadStream(__dirname + '/cmd.txt')
+        .pipe(process.stdout)
+        .on('close', function () { process.exit(1) });
+} else if (argv.v) {
+  return console.log(require('../package.json').version);
 }
 
 function find(key){
