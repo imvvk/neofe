@@ -1,0 +1,28 @@
+
+{
+   "fePerfix" : ["/amy_h5","src"],
+   "browserfiy": {
+     "options": {
+        "paths" : ["./src/scripts/lib/"],
+        "external" : ["zepto","event"],
+        "extensions" : [".tmpl"]
+     },
+     "transform" : [],
+     "browser" : {
+     },
+     "shim" : {
+     }
+   },
+   "nobuild": [],
+   "exports" : {
+   
+   },
+   "buildPath" : "",
+   "verpath" : "",
+   "verOptions" : {
+    
+   },
+   "deploy" : {
+   
+   }
+}
