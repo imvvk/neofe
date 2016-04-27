@@ -35,6 +35,8 @@
     "gulp-watch": "^4.3.1",
     "juicer": "^0.6.10-stable",
     "juicerify": "*",
+    "lodash": "^4.11.1",
+    "micromatch": "^2.3.7",
     "mime-types": "^2.1.2",
     "minimatch": "^3.0.0",
     "module-deps": "^3.8.1",
