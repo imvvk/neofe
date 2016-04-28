@@ -5,17 +5,14 @@
      "options": {
         "paths" : ["./src/scripts/lib/"],
         "external" : ["zepto","event"],
-        "extensions" : [".tmpl"]
-     },
-     "transform" : [],
-     "browser" : {
-     },
-     "shim" : {
+        "extensions" : [".tmpl"],
+        "transform" : []
      }
    },
-   "nobuild": [],
    "exports" : {
-   
+     "scritps" : [],
+     "styles" : [],
+     "html" : []
    },
    "buildPath" : "",
    "verpath" : "",

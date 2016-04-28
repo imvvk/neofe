@@ -37,6 +37,7 @@
     "juicer": "^0.6.10-stable",
     "juicerify": "*",
     "lodash": "^4.11.1",
+    "log": "^1.4.0",
     "micromatch": "^2.3.7",
     "mime-types": "^2.1.2",
     "minimatch": "^3.0.0",
