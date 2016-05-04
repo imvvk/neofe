@@ -1,6 +1,0 @@
-#!/usr/bin/env node
-require('../lib/server')({
-   cwd :  process.cwd(),
-   port :  process.argv[2] || 8998 
-});
-

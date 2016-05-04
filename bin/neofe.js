@@ -18,7 +18,6 @@ var JSONStream = require('JSONStream');
 var through = require('through2');
 var argv = require("yargs")
     .alias("p","port")   // server port
-    .alias("s","single") // browerify not pack  single mod
     .alias("d","dist")   // deploy dist name
     .alias("t","task")   // deploy task name
     .alias("h","help")
@@ -42,9 +41,10 @@ if (find("server")) {
   b.server(opts);
 
 } else if (find("build")) {
-  console.log("start build======");
   b.build();
-}else if(find("deploy")){
+} else if (find("pack")) {
+  b.pack();
+} else if(find("deploy")){
   var task = argv.t , dist = argv.d;
   if(!task){
     console.error("not input deploy task");
@@ -70,6 +70,8 @@ if (find("server")) {
         .on('close', function () { process.exit(1) });
 } else if (argv.v) {
   return console.log(require('../package.json').version);
+} else if (find("init")) {
+  b.init();
 } else {
   console.log("the commond not exist", argv);
 

@@ -1,25 +1,21 @@
-
 {
-   "fePerfix" : ["/amy_h5","src"],
-   "browserfiy": {
-     "options": {
-        "paths" : ["./src/scripts/lib/"],
-        "external" : ["zepto","event"],
-        "extensions" : [".tmpl"],
-        "transform" : []
-     }
-   },
-   "exports" : {
-     "scritps" : [],
-     "styles" : [],
-     "html" : []
-   },
-   "buildPath" : "",
-   "verpath" : "",
-   "verOptions" : {
-    
-   },
-   "deploy" : {
-   
-   }
+  "browserfiy": {
+    "options": {
+      "paths": [],
+      "external": [],
+      "extensions": [],
+      "transform": []
+    }
+  },
+  "exports": {
+    "scritps": [],
+    "styles": [],
+    "html": []
+  },
+  "server": {
+    "parseFileType": ["css", "js", "html"]
+  },
+  "buildPath": "",
+  "verpath": "",
+  "deploy": {}
 }

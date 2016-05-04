@@ -27,8 +27,6 @@ Command :
 
           --port, -p,  a port of the server. default 8998;
                        本地启动服务的端口号 . 默认 8998.
-        --single, -s,  start single mode , a packed file is split into  separate files.
-                       开启单一模式， 打包的文件将会被分解为多个单独的文件。
 
 
   build   as follow the package.json build the project  (pack, compress ,and minify  css or js file);
