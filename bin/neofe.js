@@ -22,6 +22,8 @@ var argv = require("yargs")
     .alias("d","dist")   // deploy dist name
     .alias("t","task")   // deploy task name
     .alias("h","help")
+    .alias("f","files")
+    .alias("c","file_config")
     .alias("v","version")
     .argv;
 
@@ -54,13 +56,25 @@ if (find("server")) {
   }
   console.log("start deploy======");
   b.deploy(task,dist);
+} else if (find("show_common_deps")) {
+  var files = argv.files ;
+  if (files) {
+    b.show_common_deps(files);
+  } else if(argv.file_config) {
+    var config = JSON.parse(fs.readFileSync(argv.file_config));
+    b.show_common_deps(config);
+  }
 } else if (argv.h) {
   return fs.createReadStream(__dirname + '/cmd.txt')
         .pipe(process.stdout)
         .on('close', function () { process.exit(1) });
 } else if (argv.v) {
   return console.log(require('../package.json').version);
+} else {
+  console.log("the commond not exist", argv);
+
 }
+
 
 function find(key){
   return ~argv._.indexOf(key);
