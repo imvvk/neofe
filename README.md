@@ -54,14 +54,14 @@ Usage :
                       --file_config, -c  多个文件可以用高配置
                       --help , -h  show help
 
-Options :
+    Options :
 
-  --help , -h  show help
-  --version, -v show neofe version
+    --help , -h  show help
+    --version, -v show neofe version
 
 
 
-neofe.config 介绍
+### neofe.config 介绍
 
     {
       "browserify": {
@@ -100,8 +100,8 @@ neofe.config 介绍
       }
     }
 
-  ** 为了兼容老版本，也可以在package.json里写入配置文件，区别仅仅是exports 要写在 browserify 里面 **;
-  ** Config  could in package.json for hack old version **
+** 为了兼容老版本，也可以在package.json里写入配置文件，区别仅仅是exports 要写在 browserify 里面 **
+** Config  could in package.json for hack old version **
 
 ### Package.json Example
 
