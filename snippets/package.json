@@ -1,0 +1,34 @@
+{
+    "browserify" : {
+      "options" : {
+        "transform" : ["juicerify"],
+        "paths" : [],
+        "external" : [],
+        "extensions" : [".tmpl"]
+      },
+      "exports" : {
+        "basedir": "./",
+        "scripts": ["./src/scripts/exports/**/*.js"],
+        "styles": ["./src/styles/exports/**/*.scss"],
+        "htmls": ["./html/**/*.html"]
+      }
+    },
+    "server": {
+      "parseFileType": ["css", "js", "html"]
+    },
+    "buildPath": "./build",
+    "verPath": "./ver",
+    "deploy": {
+      "static": {
+        "src": "./build/src/",
+        "dest": "/home/www/static/",
+        "username": "xxx",
+        "exclude": [".git", ".svn"],
+        "host": { 
+          "dev" : "10.0.0.1",
+          "beta": "10.0.0.1",
+          "prd" : "10.0.0.1"
+        }
+      }
+    }
+}
