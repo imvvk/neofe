@@ -16,6 +16,8 @@
 var fs = require('fs');
 var JSONStream = require('JSONStream');
 var through = require('through2');
+var chalk =  require("chalk");
+
 var argv = require("yargs")
     .alias("p","port")   // server port
     .alias("d","dist")   // deploy dist name
@@ -37,7 +39,7 @@ if (find("server")) {
   if (typeof opts.port !== "number"){
     opts.port = 8998;
   }
-  console.log("start neofe local server port : %s , mode : %s .",opts.port , opts.single ? "single" : "pack");
+  console.log(chalk.blue("start neofe local server port : %s ") , opts.port );
   b.server(opts);
 
 } else if (find("build")) {
@@ -47,16 +49,27 @@ if (find("server")) {
 } else if(find("deploy")){
   var task = argv.t , dist = argv.d;
   if(!task){
-    console.error("not input deploy task");
+    console.error(chalk.red("not input deploy task"));
     return;
   }
   if (!dist) {
-    console.error("no input deploy dist");
+    console.error(chalk.red("no input deploy dist"));
     return;
   }
-  console.log("start deploy======");
   b.deploy(task,dist);
 } else if (find("show_common_deps")) {
+  if (argv.help) {
+    console.log("find multiple files dependent module, command: ");
+    console.log(chalk.blue("neofe -f path/file1.js -f path/file2.js -f path/file3.js "))
+    console.log("or input -c (--file_config)") 
+    console.log(chalk.blue("neofe -c path/config.json"));
+    console.log("config.json content :")
+    console.log(JSON.stringify([
+      "path/file1.js",
+      "path/file2.js",
+      "path/file3.js"
+    ], null, " "));
+  }
   var files = argv.files ;
   if (files) {
     b.show_common_deps(files);
@@ -73,7 +86,7 @@ if (find("server")) {
 } else if (find("init")) {
   b.init();
 } else {
-  console.log("the commond not exist", argv);
+  console.log(chalk.red("the commond not exist"), argv);
 
 }
 

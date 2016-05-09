@@ -1,10 +1,16 @@
+/***
+ * neofe cmd js 
+ *
+ ***/
+var fs = require("fs");
+var path = require("path");
+var chalk = require("chalk");
+
 var server = require("../lib/server.js");
 var sync = require("../lib/sync.js");
 var findCommonDeps = require("../lib/pac_bundle.js").findCommonDeps;
 var loadConfig = require("../lib/load_config.js");
 var pack = require("../lib/pack.js");
-var fs = require("fs");
-var path = require("path");
 
 module.exports.server = function(options) {
   var cwd = process.cwd();
@@ -18,23 +24,23 @@ module.exports.pack = function() {
   return pack(process.cwd(), false);
 };
 
-module.exports.deploy = function(task, dist) {
-  return sync(process.cwd(), task, dist);
+module.exports.deploy = function(task, dest) {
+  return sync(process.cwd(), task, dest);
 };
 
 module.exports.init = function() {
   var cwd = process.cwd();
   var config_path = path.join(cwd, "./neofe.config");
-  var exist = fs.statSync(config_path);
-  console.log(config_path);
+  var exist = fs.existsSync(config_path);
   if (exist) {
-    console.error("neofe.config already exists!")
+    console.log(chalk.red("neofe.config already exists!"));
     return;
   } 
   var content = fs.readFileSync(path.join(__dirname,"../","./snippets/neofe.json"));
   var fsw = fs.createWriteStream(config_path);
   fsw.write(content);
   fsw.end();
+  console.log(chalk.green("neofe.config create success! path is %s"), config_path);
 };
 
 

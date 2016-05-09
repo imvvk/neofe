@@ -1,6 +1,6 @@
 {
   "name": "neofe",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "a tool for web developer ",
   "main": "./lib/index.js",
   "author": {
@@ -21,6 +21,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^2.2.0",
     "gulp-debug": "^2.1.0",
+    "gulp-htmlmin": "^2.0.0",
     "gulp-md5": "^0.1.1",
     "gulp-minify-html": "^1.0.6",
     "gulp-prompt": "^0.1.2",
@@ -56,6 +57,5 @@
     "vinyl-sourcemaps-apply": "^0.2.1",
     "yargs": "^4.1.0"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
