@@ -1,7 +1,9 @@
 {
   "name": "neofe",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "a tool for web developer ",
+  "license": "MIT",
+  "repository": "https://github.com/imvvk/neofe",
   "main": "./lib/server.js",
   "author": {
     "name": "imvvk"
@@ -27,6 +29,7 @@
     "gulp-replace": "^0.5.4",
     "gulp-rsync": "0.0.5",
     "gulp-util": "^3.0.7",
+    "gulp-zip": "^3.2.0",
     "js-string-escape": "^1.0.1",
     "juicer": "^0.6.10-stable",
     "juicerify": "^1.0.0",

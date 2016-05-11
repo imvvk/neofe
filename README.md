@@ -151,39 +151,48 @@ Usage :
 
                globalExpose {Object} 整个项目全局映射的 expose 配置
 
-    exports  scripts  脚本输出配置 array or string 如果是String 仅指一个文件 "path/file"
-             styles 样式输出配置 array or string  如果是String 仅指一个文件 "path/file"
-             htmls html 输出文件 执行build 命令时 会对html 的 link href script src 进行版本号替换
+    exports  scripts : 脚本输出配置 array or string 如果是String 仅指一个文件 "path/file"
+             styles: 样式输出配置 array or string  如果是String 仅指一个文件 "path/file"
 
-             basedir  针对 scritps 和 styles 打包时的 base 目录,会以应用与  gulp src options 的base 属性
+             htmls: html 输出文件 执行build 命令时 会对html 的 link href script src 进行版本号替换
 
-             scripts, styles 里文件配置介绍 ：
-             注意：项目的输出文件，在server 启动中只有符合 exports glob的请求才会被解析，
-             请求文件在也就是exports 中的 scripts styles里有配置才可以被解析。
+            输出文件介绍：
+                 scripts, styles 里文件配置介绍 ：
+                 注意：项目的输出文件，在server 启动中只有符合 exports glob的请求才会被解析，
+                 请求文件在也就是exports 中的 scripts styles里有配置才可以被解析。
 
-             {file : "path/file" ,isParent:false, parents: undefined, expose: undefined , outCss : false ,containCss : false }
-             可以简写为 "path/file"
+                 {file : "path/file" ,isParent:false, parents: undefined, expose: undefined , outCss : false ,containCss : false }
+                 可以简写为 "path/file"
 
-             isParent : 是另外一个export 文件的前置加载js 文件 true  表示此文件中的模块都会对外暴露出来，可以让子文件require
-             parents: 此文件所有的前置加载文件 ，此文件的依赖如果存在于parents中则不被打包到此文件中。而是从父文件中依赖取得。
+                 isParent : 是另外一个export 文件的前置加载js 文件 true  表示此文件中的模块都会对外暴露出来，可以让子文件require
+                 parents: 此文件所有的前置加载文件 ，此文件的依赖如果存在于parents中则不被打包到此文件中。而是从父文件中依赖取得。
 
-             默认值
-             expose为 undefined
-             outCss false
-             containCss false
+                 默认值
+                 expose为 undefined
+                 outCss false
+                 containCss false
 
-             1.1.6 在 exports 新增 minify 配置  js 用 uglifyjs 压缩 ， css用clean css 压缩 ，script 和 style 为各自配置
 
-             "minify"  : {
-               "script" : {
-                 "mangle": {
-                   "except": ["$super"]
+
+             basedir:  针对 scritps 和 styles 打包时的 base 目录,会以应用于 gulp src options 的base 属性
+
+             htmlBaseDir: html 输出base目录 以应用于 gulp src options 的base 属性
+
+             "minify" :  压缩配置
+                 1.1.6 在 exports 新增 minify 配置  js 用 uglifyjs 压缩 ， css用clean css 压缩 ，script 和 style 为各自配置
+
+
+                 "minify"  : {
+                   "script" : {
+                     "mangle": {
+                       "except": ["$super"]
+                     }
+                   },
+                   "styles" : {
+
+                   }
                  }
-               },
-               "styles" : {
-
-               }
-             }
+             "zip": Boolean 是否生成压缩包 在buildPath目录下 命名为pkg.zip 为混合开发准备
 
 
     server parseFileType  线上 js css html 资源将被server 解析 其他文件资源直接返回真实资内容。
