@@ -188,9 +188,10 @@ Usage :
                        "except": ["$super"]
                      }
                    },
-                   "styles" : {
+                   "style" : {
 
-                   }
+                   },
+                   "html" :{}
                  }
              "zip": Boolean 是否生成压缩包 在buildPath目录下 命名为pkg.zip 为混合开发准备
 
@@ -229,3 +230,11 @@ require文件会走brwoserfiy 的分析， 然后再经过 sass transform
 
 
 ![路径转化图](./router.png)
+
+
+
+
+==========================
+1.1.10   增加html压缩 配置  neofe.config 中exports 的minify 中增加 html : {  @options }
+        options 说明见[html-minifier](https://github.com/kangax/html-minifier)
+        增加 neofe pack html   和 neofe build html 单独处理html 版本替换 （pack 或 build 之后使用 , 调试用）

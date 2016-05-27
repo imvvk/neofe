@@ -17,11 +17,11 @@ module.exports.server = function(options) {
   return server(cwd, options);
 };
 
-module.exports.build = function() {
-  return pack(process.cwd(), true);
+module.exports.build = function(task) {
+  return pack(process.cwd(), true, task);
 };
-module.exports.pack = function() {
-  return pack(process.cwd(), false);
+module.exports.pack = function(task) {
+  return pack(process.cwd(), false, task);
 };
 
 module.exports.deploy = function(task, dest) {

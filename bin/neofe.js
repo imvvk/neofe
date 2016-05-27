@@ -43,9 +43,17 @@ if (find("server")) {
   b.server(opts);
 
 } else if (find("build")) {
-  b.build();
+  var task;
+  if (find("html")) {
+    task = "html";
+  }
+  b.build(task);
 } else if (find("pack")) {
-  b.pack();
+  var task;
+  if (find("html")) {
+    task = "html";
+  }
+  b.pack(task);
 } else if(find("deploy")){
   var task = argv.t , dist = argv.d;
   if(!task){
