@@ -24,8 +24,8 @@ module.exports.pack = function(task) {
   return pack(process.cwd(), false, task);
 };
 
-module.exports.deploy = function(task, dest) {
-  return sync(process.cwd(), task, dest);
+module.exports.deploy = function(task, dest, not_prompt) {
+  return sync(process.cwd(), task, dest, not_prompt);
 };
 
 module.exports.init = function() {

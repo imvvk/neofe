@@ -64,7 +64,7 @@ if (find("server")) {
     console.error(chalk.red("no input deploy dist"));
     return;
   }
-  b.deploy(task,dist);
+  b.deploy(task, dist, argv["not-promt"]);
 } else if (find("show_common_deps")) {
   if (argv.help) {
     console.log("find multiple files dependent module, command: ");

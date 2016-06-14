@@ -238,3 +238,9 @@ require文件会走brwoserfiy 的分析， 然后再经过 sass transform
 1.1.10   增加html压缩 配置  neofe.config 中exports 的minify 中增加 html : {  @options }
         options 说明见[html-minifier](https://github.com/kangax/html-minifier)
         增加 neofe pack html   和 neofe build html 单独处理html 版本替换 （pack 或 build 之后使用 , 调试用）
+
+1.1.12  deploy命令增加 --not-promt  参数 neofe deploy -t taskname -d dest_name --not-promt 不提示confirm 信息
+        配置文件deploy 设置 增加hostname 为数组 可以向多个服务器sync 
+        配置文件新增 buildHtmlPath 可以指定html 的输出地址
+        配置文件exports 中新增 staticReg 可以配置需要替换的 version src 或者 href  内容
+        html replace version 增加日志输出
