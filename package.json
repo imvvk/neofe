@@ -1,6 +1,6 @@
 {
   "name": "neofe",
-  "version": "1.1.15",
+  "version": "1.1.16",
   "description": "a tool for web developer ",
   "license": "MIT",
   "repository": "https://github.com/imvvk/neofe",
@@ -12,10 +12,10 @@
     "neofe": "./bin/neofe.js"
   },
   "dependencies": {
-    "JSONStream": "^1.1.1",
+    "JSONStream": "^1.1.2",
     "browserify": "^12.0.1",
     "chalk": "^1.1.3",
-    "clean-css": "^3.4.12",
+    "clean-css": "^3.4.18",
     "extend": "^3.0.0",
     "fs-extra": "^0.22.1",
     "gulp": "^3.9.1",
@@ -33,13 +33,13 @@
     "js-string-escape": "^1.0.1",
     "juicer": "^0.6.10-stable",
     "juicerify": "^1.0.0",
-    "lodash": "^4.11.1",
+    "lodash": "^4.13.1",
     "log": "^1.4.0",
     "micromatch": "^2.3.7",
     "mime-types": "^2.1.2",
-    "minimatch": "^3.0.0",
+    "minimatch": "^3.0.2",
     "module-deps": "^3.9.1",
-    "node-sass-china": "^3.4.2",
+    "node-sass-china": "^3.7.0",
     "parse-filepath": "^0.6.3",
     "path": "^0.11.14",
     "path-parse": "^1.0.5",
@@ -50,11 +50,11 @@
     "stream-to-array": "^2.0.2",
     "through": "^2.3.8",
     "through2": "^2.0.0",
-    "uglify-js": "^2.6.2",
+    "uglify-js": "^2.6.3",
     "uglify-save-license": "^0.4.1",
     "vinyl": "^1.1.1",
     "vinyl-sourcemaps-apply": "^0.2.1",
-    "yargs": "^4.1.0"
+    "yargs": "^4.7.1"
   },
   "devDependencies": {}
 }
