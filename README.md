@@ -256,3 +256,10 @@ require文件会走brwoserfiy 的分析， 然后再经过 sass transform
         "sources" : ["xxx/path/**/*.*"]
     },
     buildSourcePath : "abc/path"
+
+1.1.18
+    打包时增加 参数可以不加版本号    
+
+    neofe build --noversion 
+    
+    neofe pack --noversion

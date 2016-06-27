@@ -43,17 +43,23 @@ if (find("server")) {
   b.server(opts);
 
 } else if (find("build")) {
+  var opt  = {};
   var task;
   if (find("html")) {
     task = "html";
   }
-  b.build(task);
+  opt.noversion = argv.noversion;
+  b.build(task, opt);
+
 } else if (find("pack")) {
+  var opt  = {};
   var task;
   if (find("html")) {
     task = "html";
   }
-  b.pack(task);
+  opt.noversion = argv.noversion;
+  b.pack(task, opt);
+
 } else if(find("deploy")){
   var task = argv.t , dist = argv.d;
   if(!task){
