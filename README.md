@@ -61,7 +61,7 @@ Usage :
 
 
 
-### neofe.config 介绍
+### `neofe.config` 介绍
 
     {
       "browserify": {
@@ -69,21 +69,34 @@ Usage :
           "paths": [],
           "external": [],
           "extensions": [],
-          "transform": [],
-          "containCss" : false
+          "transform": []
         }
+        "containCss" : false,
+        "outCss" : false
       },
       "exports": {
         "basedir": "./",
+        "baseHtmlDir" : "./",
+        "baseSourceDir" : "./",
         "scripts": ["./src/scripts/exports/**/*.js"],
         "styles": ["./src/styles/exports/**/*.scss"],
-        "htmls": ["./html/**/*.html"]
+        "htmls": ["./html/**/*.html"],
+        "sources" : ["./images/**"]
+        "minify" : {
+          "script" : {},
+          "style" : {},
+          "html" : {}  
+        }
       },
       "server": {
         "parseFileType": ["css", "js", "html"]
       },
       "buildPath": "./build",
+      "buildHtmlPath" :  "./buildHtml",
+      "buildSourcePath" : "./buildSourcePath",
       "packPath": "./pack",
+      "packHtmlPath" : "./packHtml",
+      "packSourcePath" : "./packSoucePath",
       "verpath": "./ver",
       "deploy": {
         "static": {
@@ -143,61 +156,87 @@ Usage :
 
 ### 配置文件介绍  Config
 
-    browerify  options 是browserify 配置需要的options，其中以下属性不属于browserfiy options：
-               containCss 为 true 表示 样式文件(例如：css scss) 将被打包为 module.epxorts="{{文件内容}}",
-               否则将被独立输出
+`browerify` 属性下的详细配置  
 
-               outCss 表示pack 或者 build 时输出与js 同名的css 文件
+    options 是browserify 配置需要的options，以下为options 详细说明   
+         path 目录数组,表示require 时不使用相对路径的模块的查找路径，例如:["./src/libs"] require("cookie") 时，会从node_modules 和 src/libs 里查找，node_modules 是默认查找的路径.  
+         require  外部require 的模块数组, 一般不使用，特殊情况下require 外部资源作为公共模块使用.  
+         external 需要剔除的外部模块数组，比如React  Angular jQuery 这种体积较大的模块  
+         transform  browerify 转换数组 [browserify transform list](https://github.com/substack/node-browserify/wiki/list-of-transforms)   
 
-               globalExpose {Object} 整个项目全局映射的 expose 配置
+    containCss 为 true 表示 样式文件(例如：css scss) 将被打包为 module.epxorts="{{文件内容}}",一般此模式用于
+    requireJs 项目引用styles 输出到页面 。否则将被独立输出为一个CSS文件。  
 
-    exports  scripts : 脚本输出配置 array or string 如果是String 仅指一个文件 "path/file"
-             styles: 样式输出配置 array or string  如果是String 仅指一个文件 "path/file"
+    outCss 表示pack 或者 build 时输出与js 同名的css 文件  
 
-             htmls: html 输出文件 执行build 命令时 会对html 的 link href script src 进行版本号替换
+    globalExpose {Object} 整个项目全局映射的 expose 配置
 
-            输出文件介绍：
-                 scripts, styles 里文件配置介绍 ：
-                 注意：项目的输出文件，在server 启动中只有符合 exports glob的请求才会被解析，
-                 请求文件在也就是exports 中的 scripts styles里有配置才可以被解析。
+`exports` 详细配置
 
-                 {file : "path/file" ,isParent:false, parents: undefined, expose: undefined , outCss : false ,containCss : false }
-                 可以简写为 "path/file"
+    scripts : 脚本输出配置 array or string 如果是String 仅指一个文件 "path/file"
 
-                 isParent : 是另外一个export 文件的前置加载js 文件 true  表示此文件中的模块都会对外暴露出来，可以让子文件require
-                 parents: 此文件所有的前置加载文件 ，此文件的依赖如果存在于parents中则不被打包到此文件中。而是从父文件中依赖取得。
+    styles: 样式输出配置 array or string  如果是String 仅指一个文件 "path/file"
 
-                 默认值
-                 expose为 undefined
-                 outCss false
-                 containCss false
+    htmls: html 输出文件 执行build 命令时 会对html 的 link href script src 进行版本号替换
+
+    source : 不需要转化的但是需要构建到发布文件夹的 比如images 方便发布使用。
+
+    basedir:  针对 scritps 和 styles 打包时的 base 目录,会以应用于 gulp src options 的base 属性
+
+    htmlBaseDir: html 输出base目录 以应用于 gulp src options 的base 属性
+    htmlSourceDir: source  输出base目录 以应用于 gulp src options 的base 属性
+
+    minify 文件压缩配置 js 用 uglifyjs 压缩 ， css用clean css 压缩 ，script 和 style 为各自配置  html 用gulp-htmlmin 配置
+
+    输出文件介绍：
+    scripts 里文件配置介绍 ：
+    注意：项目的输出文件，在server 启动中只有符合 exports glob的请求才会被解析，
+    请求文件在也就是exports 中的 scripts styles里有配置才可以被解析。
+
+    {file : "path/file" ,isParent:false, parents: undefined, expose: undefined , outCss : false ,containCss : false }
+    可以简写为 "path/file"
+
+    isParent : 是另外一个export 文件的前置加载js 文件 true  表示此文件中的模块都会对外暴露出来，可以让子文件require
+
+    parents: 此文件所有的前置加载文件 ，此文件的依赖如果存在于parents中则不被打包到此文件中。而是从父文件中依赖取得。
+
+    require 子文件的browserfiy 配置 会覆盖全局的 配置
+    external 子文件的browserfiy 配置 会覆盖全局的 配置
+
+    默认值
+    expose 默认为 undefined 一般用于生成外部模块 或者 异步加载JS 时，对外暴露名称。
+    outCss false
+    containCss false
+
+    minify 配置说明
+
+    minify  : {
+       "script" : {
+         "mangle": {
+           "except": ["$super"]
+         }
+       },
+       "style" : {
+
+       },
+       "html" :{}
+     }
 
 
+`buildPath`  build 执行时 exports 中的 scripts styles 的输出目录
 
-             basedir:  针对 scritps 和 styles 打包时的 base 目录,会以应用于 gulp src options 的base 属性
+`buildHtmlPath`  build 执行时 exports 中的 htmls 的输出目录
 
-             htmlBaseDir: html 输出base目录 以应用于 gulp src options 的base 属性
+`buildSourcePath`  build 执行时 exports 中的 sources 的输出目录
 
-             "minify" :  压缩配置
-                 1.1.6 在 exports 新增 minify 配置  js 用 uglifyjs 压缩 ， css用clean css 压缩 ，script 和 style 为各自配置
+`packPath`  pack 执行时 exports 中的 scripts styles 的输出目录
 
+`packHtmlPath`  pack 执行时 exports 中的 scripts styles 的输出目录
 
-                 "minify"  : {
-                   "script" : {
-                     "mangle": {
-                       "except": ["$super"]
-                     }
-                   },
-                   "style" : {
-
-                   },
-                   "html" :{}
-                 }
-             "zip": Boolean 是否生成压缩包 在buildPath目录下 命名为pkg.zip 为混合开发准备
+`packSourcePath`  pack 执行时 exports 中的 scripts styles 的输出目录
 
 
-    server parseFileType  线上 js css html 资源将被server 解析 其他文件资源直接返回真实资内容。
-
+"verpath": "./ver"  版本号文件输出目录 里面含有 manifest.json 文件
 
 ### Example 介绍
 
@@ -236,21 +275,22 @@ require文件会走brwoserfiy 的分析， 然后再经过 sass transform
 
 ==========================
 1.1.10   
-    增加html压缩 配置  neofe.config 中exports 的minify 中增加 html : {  @options }
-    options 说明见[html-minifier](https://github.com/kangax/html-minifier)
-    增加 neofe pack html   和 neofe build html 单独处理html 版本替换 （pack 或 build 之后使用 , 调试用）
-    config  新增 buildHtmlPath 指定 html的目的目录默认为 buildPath
+    增加html压缩 配置  neofe.config 中exports 的minify 中增加 html : {  @options }  
+    options 说明见[html-minifier](https://github.com/kangax/html-minifier)  
+    增加 neofe pack html   和 neofe build html 单独处理html 版本替换 (pack 或 build 之后使用 , 调试用)  
+    config  新增 buildHtmlPath 指定 html的目的目录默认为 buildPath  
 
 
 1.1.12  
-    deploy命令增加 --not-promt  参数 neofe deploy -t taskname -d dest_name --not-promt 不提示confirm 信息
-    配置文件deploy 设置 增加hostname 为数组 可以向多个服务器sync 
-    配置文件新增 buildHtmlPath 可以指定html 的输出地址
-    配置文件exports 中新增 staticReg 可以配置需要替换的 version src 或者 href  内容
-    html replace version 增加日志输出
+    deploy命令增加 --not-promt  参数 neofe deploy -t taskname -d dest_name --not-promt 不提示confirm 信息  
+    配置文件deploy 设置 增加hostname 为数组 可以向多个服务器sync   
+    配置文件新增 buildHtmlPath 可以指定html 的输出地址  
+    配置文件exports 中新增 staticReg 可以配置需要替换的 version src 或者 href  内容  
+    html replace version 增加日志输出  
 
 1.1.15   
-    exports 增加sources可以将image swf 等资源移动到相应的build目录 ,config  新增 buildSourcePath 指定 source的目的目录默认为 buildPath
+    exports 增加sources可以将image swf 等资源移动到相应的build目录 ,config  新增 buildSourcePath 指定 source的目的目录默认为 buildPath  
+
     exports : {
         "sourceBaseDir" : "xxxx/path",
         "sources" : ["xxx/path/**/*.*"]
@@ -260,6 +300,5 @@ require文件会走brwoserfiy 的分析， 然后再经过 sass transform
 1.1.18
     打包时增加 参数可以不加版本号    
 
-    neofe build --noversion 
-    
+    neofe build --noversion
     neofe pack --noversion
