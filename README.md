@@ -188,6 +188,11 @@ Usage :
 
     minify 文件压缩配置 js 用 uglifyjs 压缩 ， css用clean css 压缩 ，script 和 style 为各自配置  html 用gulp-htmlmin 配置
 
+    insertManifest 默认是 false  如果是true 会在html 的head 里插入 script 脚本  
+       
+         <script> if (typeof  window.__Manifest__ === "undefined") { window.__Manifest__='+JSON.stringify(manifest)+ ';}</script>;
+
+
     输出文件介绍：
     scripts 里文件配置介绍 ：
     注意：项目的输出文件，在server 启动中只有符合 exports glob的请求才会被解析，
@@ -234,6 +239,9 @@ Usage :
 `packHtmlPath`  pack 执行时 exports 中的 scripts styles 的输出目录
 
 `packSourcePath`  pack 执行时 exports 中的 scripts styles 的输出目录
+
+`fePrefix` Array 数组类型 ["someproject", "src/"]   
+
 
 
 "verpath": "./ver"  版本号文件输出目录 里面含有 manifest.json 文件
