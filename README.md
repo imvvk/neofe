@@ -311,3 +311,9 @@ require文件会走brwoserfiy 的分析， 然后再经过 sass transform
 
     neofe build --noversion
     neofe pack --noversion
+
+1.1.20 
+    增加  exports中的导出资源增加  require external  配置 独立打包 灵活配置 
+
+
+    
