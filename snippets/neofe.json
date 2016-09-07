@@ -14,7 +14,7 @@
     "htmls": ["./html/**/*.html"]
   },
   "server": {
-    "parseFileType": ["css", "js", "html"]
+    "parseFileType": ["scss","css", "js", "html"]
   },
   "buildPath": "./build",
   "packPath": "./pack",
@@ -23,7 +23,7 @@
     "static": {
       "src": "./build/src/",
       "dest": "/home/www/static/",
-      "username": "xxx",
+      "user": "xxx",
       "exclude": [".git", ".svn"],
       "host": { 
         "dev" : "10.0.0.1",
