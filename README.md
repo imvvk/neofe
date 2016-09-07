@@ -243,6 +243,9 @@ Usage :
 
 `fePrefix` Array 数组类型 ["someproject", "src/"]   
 
+`server` 有关neofe server 的相关配置 
+    parseFileType : [] 设定那些文件将被server 解析 除此之外的文件都被会直接返回。 
+
 
 
 "verpath": "./ver"  版本号文件输出目录 里面含有 manifest.json 文件
