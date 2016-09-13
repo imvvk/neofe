@@ -28,6 +28,7 @@ var argv = require("yargs")
     .alias("v","version")
     .argv;
 
+var _ = argv._;
 
 var b = require('./args');
 
@@ -99,12 +100,15 @@ if (find("server")) {
   return console.log(require('../package.json').version);
 } else if (find("init")) {
   b.init();
+} else if (find("build_ext")) {
+  var type = argv.t , index = argv.i;
+  b.build_external(type, index);
+
 } else {
   console.log(chalk.red("the commond not exist"), argv);
-
 }
 
 
 function find(key){
-  return ~argv._.indexOf(key);
+  return ~_.indexOf(key);
 }

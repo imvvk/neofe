@@ -1,6 +1,6 @@
 {
   "name": "neofe",
-  "version": "1.1.21",
+  "version": "1.1.22",
   "description": "a tool for web developer ",
   "license": "MIT",
   "repository": "https://github.com/imvvk/neofe",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "JSONStream": "^1.1.2",
-    "browserify": "^12.0.1",
+    "browserify": "^13.0.0",
     "chalk": "^1.1.3",
     "clean-css": "^3.4.18",
     "extend": "^3.0.0",
@@ -26,6 +26,7 @@
     "gulp-minify-html": "^1.0.6",
     "gulp-print": "^2.0.1",
     "gulp-prompt": "^0.1.2",
+    "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
     "gulp-rsync": "0.0.6",
     "gulp-util": "^3.0.7",
