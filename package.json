@@ -40,6 +40,7 @@
     "mime-types": "^2.1.2",
     "minimatch": "^3.0.2",
     "module-deps": "^3.9.1",
+    "node-cache": "^4.0.0",
     "node-sass-china": "^3.7.0",
     "parse-filepath": "^0.6.3",
     "path": "^0.11.14",
