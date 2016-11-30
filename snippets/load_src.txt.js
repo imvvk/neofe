@@ -187,6 +187,4 @@ if (typeof window.__LoadSrc === "undefined") {
   return _load;
   })();
 }
-__LoadSrc({{deps}},function(){
-  {{fn}}
-});
+__LoadSrc({{__source__}});

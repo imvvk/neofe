@@ -14,7 +14,6 @@
  */
 
 var fs = require('fs');
-var JSONStream = require('JSONStream');
 var through = require('through2');
 var chalk =  require("chalk");
 
